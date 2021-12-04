@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-app
+  labels:
+    estado: "i"
+spec:
+  selector:
+    matchLabels:
+      app: app
+      tier: web
+  replicas: 7
+  template:
+    metadata:
+      labels:
+        app: app
+        tier: web
+    spec:
+      containers:
+      - name: my-app
+        image: csarmontc/webapp:latest
+        ports:
+        - containerPort: 80

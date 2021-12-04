@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inmobiliarias en México y Bienes raíces</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+      body {
+        font-family: 'Lato', sans-serif;
+      }
+      .overlays {
+        height: 0%;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0, 0.9);
+        overflow-y: hidden;
+        transition: 0.5s;
+      }
+      
+      .overlays-content {
+        position: relative;
+        top: 25%;
+        width: 100%;
+        text-align: center;
+        margin-top: 30px;
+      }
+      
+      .overlays a {
+        padding: 8px;
+        text-decoration: none;
+        font-size: 36px;
+        color: #818181;
+        display: block;
+        transition: 0.3s;
+      }
+      
+      .overlays a:hover, .overlays a:focus {
+        color: #f1f1f1;
+      }
+      
+      </style>
+</head>
+<body>
+   <!-- Menú usando topnav con dropdown content para los submenus -->
+    <div class="topnav" id="myTopnav">
+      <div class="barra-izq">     
+        <img src="assets/log.png" height="42px" width="170px"/>
+      </div>
+        <div class="dropdown">
+          <button class="dropbtn">En venta 
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content">
+            <a href="#">Casas en Venta</a>
+            <a href="#">Departamentos en Venta</a>
+            <a href="#">Oficinas en Venta</a>
+          </div>
+        </div> 
+        <div class="dropdown">
+            <button class="dropbtn">En renta 
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Casas en Renta</a>
+              <a href="#">Departamentos en Renta</a>
+              <a href="#">Oficinas en Renta</a>
+            </div>
+          </div>
+        <a href="#">Nuevo Desarrollo</a>
+        <div class="dropdown">
+            <button class="dropbtn">Recursos
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Blog</a>
+              <a href="#">Calculadora hipotecaria</a>
+              <a href="#">Guía INFONAVIT</a>
+            </div>
+          </div>
+          <div class="barra-derecha">
+             <!-- Link para una página secundaria en donde se podrá hacer el LogIn o Registrarse -->
+             <div id="myNav" class="overlays">
+              <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+              <div class="overlays-content">
+                <a href="administrar.php">Vendedores</a>
+                <a href="administrarp.php">Propiedades</a>
+              </div>
+            </div>
+            <span style="float: left;text-align: center;padding: 14px 16px; cursor:pointer;color: #f1f1f1;" onclick="openNav()">Administrar </span>
+            <script>
+            function openNav() {
+              document.getElementById("myNav").style.height = "100%";
+            }
+            function closeNav() {
+              document.getElementById("myNav").style.height = "0%";
+            }
+            </script>
+            
+            <a class="active" href="#h">Ofrece una Propiedad</a>
+          </div>
+          
+        <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+      </div>
+     
+     <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
+        }
+      }
+      </script>
+      
+      <!-- Imagen principal con slogan de la pagina -->
+    <div class="hero-image">
+        <div class="hero-text">
+          <h1 style="font-size:40px">Encuentra en línea tu nuevo hogar</h1>
+          <p>Buscar por ubicación o palabra clave</p>
+          <button>Buscar</button>
+        </div>
+      </div>
+
+       <!-- Linea divisora -->
+      <hr class="new5">
+      <form action="administrar.php" class="container">
+        <button type="submit" class="btn">Administrar</button>
+      </form>
+
+       <!-- Se muestra un proyecto destacado con foto, información y botón con vínculo para más información -->
+       <!-- En una pagina secundaria-->
+       <div class="centrar">
+        <h1 style="padding-left:20px">Proyecto Destacado</h1>
+      </div> 
+      <div class="bg-img">
+        <form action="" class="container">
+          <h2>VILLAS BONANZA</h2>
+          <label >Por Inmobiliaria nuevo Caribe (INCA)</label>
+          <hr class="dotted">
+          <h3>Tipo De Propiedad Casas</h3>
+          <h3>M² Construidos 97 m²</h3>
+          <h3>Recámaras 3</h3>
+          <button type="submit" class="btn">Ver más info</button>
+        </form>
+      </div> 
+
+       <!-- Se mostrarán los proyectos que hay en diferentes ciudades -->
+        <!-- Se usará un conjunto de botones para seleccionar la ciudad -->
+      <div class="centrar">
+        <h1 style="padding-left:20px">PROYECTOS</h1>
+      </div>
+
+      
+      <div class="main">
+      <div id="myBtnContainer">
+        <button class="btn1 active" onclick="filterSelection('all')"> Todos</button>
+        <button class="btn1" onclick="filterSelection('Monterrey')"> Monterrey</button>
+        <button class="btn1" onclick="filterSelection('Guadalajara')"> Guadalajara</button>
+        <button class="btn1" onclick="filterSelection('Puebla')"> Puebla</button>
+      </div>
+
+      <!-- Se usa un Portfolio Gallery Grid que nos va a mostrar todos los proyectos y sus imagenes-->
+
+      <div class="row">
+        <div class="column Monterrey">
+          <div class="content">
+            <img src="assets/casa.jpg" style="width:100%">
+            <h4>Sauco</h4>
+            <p>Por BosqueReal </p>
+            <p>M^2 Construidos 97m2</p>
+            <button name="button">Más información</button>
+          </div>
+        </div>
+        <div class="column Monterrey">
+          <div class="content">
+          <img src="assets/casa.jpg" style="width:100%">
+          <h4>Sauco</h4>
+          <p>Por BosqueReal </p>
+          <p>M^2 Construidos 97m2</p>
+          <button name="button">Más información</button>
+          </div>
+        </div>
+        <div class="column Monterrey">
+          <div class="content">
+          <img src="assets/casa.jpg" style="width:100%">
+          <h4>Sauco</h4>
+          <p>Por BosqueReal </p>
+          <p>M^2 Construidos 97m2</p>
+          <button name="button">Más información</button>
+          </div>
+        </div>
+        
+        <div class="column Guadalajara">
+          <div class="content">
+            <img src="assets/casa.jpg" alt="Car" style="width:100%">
+            <h4>Sauco</h4>
+            <p>Por BosqueReal </p>
+            <p>M^2 Construidos 97m2</p>
+            <button name="button">Más información</button>
+          </div>
+        </div>
+        <div class="column Guadalajara">
+          <div class="content">
+          <img src="assets/casa.jpg" alt="Car" style="width:100%">
+          <h4>Sauco</h4>
+          <p>Por BosqueReal </p>
+          <p>M^2 Construidos 97m2</p>
+          <button name="button">Más información</button>
+          </div>
+        </div>
+        <div class="column Guadalajara">
+          <div class="content">
+          <img src="assets/casa.jpg" alt="Car" style="width:100%">
+          <h4>Sauco</h4>
+          <p>Por BosqueReal </p>
+          <p>M^2 Construidos 97m2</p>
+          <button name="button">Más información</button>
+          </div>
+        </div>
+
+        <div class="column Puebla">
+          <div class="content">
+            <img src="assets/casa.jpg" alt="Car" style="width:100%">
+            <h4>Sauco</h4>
+            <p>Por BosqueReal </p>
+            <p>M^2 Construidos 97m2</p>
+            <button name="button">Más información</button>
+          </div>
+        </div>
+        <div class="column Puebla">
+          <div class="content">
+          <img src="assets/casa.jpg" alt="Car" style="width:100%">
+          <h4>Sauco</h4>
+          <p>Por BosqueReal </p>
+          <p>M^2 Construidos 97m2</p>
+          <button name="button">Más información</button>
+          </div>
+        </div>
+        <div class="column Puebla">
+          <div class="content">
+          <img src="assets/casa.jpg" alt="Car" style="width:100%">
+          <h4>Sauco</h4>
+          <p>Por BosqueReal </p>
+          <p>M^2 Construidos 97m2</p>
+          <button name="button">Más información</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+       <!-- usa una seria de filtros para mostrar tambien solo el proyecto de la ciudad seleccionada -->
+      <script>
+      filterSelection("all")
+      function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("column");
+        if (c == "all") c = "";
+        for (i = 0; i < x.length; i++) {
+          w3RemoveClass(x[i], "show");
+          if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+        }
+      }
+      function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+        }
+      }
+      function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+          while (arr1.indexOf(arr2[i]) > -1) {
+            arr1.splice(arr1.indexOf(arr2[i]), 1);     
+          }
+        }
+        element.className = arr1.join(" ");
+      }
+      var btnContainer = document.getElementById("myBtnContainer");
+      var btns = btnContainer.getElementsByClassName("btn1");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function(){
+          var current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace(" active", "");
+          this.className += " active";
+        });
+      }
+      </script>
+
+      <hr class="new5">
+       <!-- Se muestran miembros del equipo con su foto, reflexión y contacto -->
+      <div class="centrar">
+        <h1 style="padding-left:20px">Asesores Destacados</h1>
+      </div>
+      <div class="row">
+        <div class="columns">
+          <div class="card">
+            <img src="assets/persona4.jpg" style="width:100%">
+            <div class="cont">
+              <h2>Antonio Hanna</h2>
+              <p class="title">Asesor</p>
+              <p>"Lamudi es la cereza en el pastel dentro del sector inmobiliario. Los inmobiliarios y los inmuebles de excelencia están en Lamudi. Las personas que han buscado un inmueble de calidad superior lo han encontrado aquí - Antonio Hanna | FIABCI Américas"</p>
+              <p>example@example.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+      
+        <div class="columns">
+          <div class="card">
+            <img src="assets/persona4.jpg" style="width:100%">
+            <div class="cont">
+              <h2>Tayde Fávila</h2>
+              <p class="title">Asesor</p>
+              <p>"Lamudi es un portal que innova e invierte constantemente para mantener el estándar de calidad que exige nuestro sector - Tayde Fávila | Presidente AMPI Cancún"</p>
+              <p>example@example.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="columns">
+          <div class="card">
+            <img src="assets/persona4.jpg" style="width:100%">
+            <div class="cont">
+              <h2>Paula Saavedra</h2>
+              <p class="title">Asesor</p>
+              <p>"Lamudi nos genera un buen número de leads aportando un 18% de negocios por medio del portal. Estoy seguro que irá aumentando por la calidad de leads que se generan - Pablo Saavedra | Presidente AMPI SLP"</p>
+              <p>example@example.com</p>
+              <p><button class="button">Contact</button></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="new5">
+       <!-- Para finalizar se muestra las maneras de poder contactarse con la empresa a traveéz de íconos -->
+      <div class="centrar">
+        <h3 style="padding-left:20px">CONÉCTESE CON LAMUDI</h3>
+        <img src="assets/facebook.svg"style="width:2%">
+        <img src="assets/google.svg"style="width:2%">
+        <img src="assets/whatsapp.svg"style="width:2%">
+        <img src="assets/twitter.svg"style="width:2%">
+      </div>
+      </body>
+</html>

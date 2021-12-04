@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-bdd
+  labels:
+    estado: "i"
+spec:
+  selector:
+    matchLabels:
+      app: bdd
+      tier: data
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: bdd
+        tier: data
+    spec:
+      containers:
+      - name: database
+        image: csarmontc/bdd:latest
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: root
+        - name: MYSQL_DATABASE
+          value: inmobiliaria
+        - name: MYSQL_USER
+          value: csar
+        - name: MYSQL_PASSWORD
+          value: csar123    
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+        - name: mysql-persistent-storage
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim  
