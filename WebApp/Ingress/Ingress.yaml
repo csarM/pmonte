@@ -9,7 +9,7 @@ spec:
     - host: app.pmontenegro.com
       http:
         paths:
-          - path: /apache
+          - path: /
             pathType: Prefix
             backend:
               service:
